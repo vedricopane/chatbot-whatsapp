@@ -1,0 +1,26 @@
+{
+  "name": "whatsapp-api",
+  "version": "1.0.0",
+  "description": "whatsapp API by VedricoPane",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "whatsapp-api",
+    "node.js"
+  ],
+  "author": "VedricoPane",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "http": "^0.0.1-security",
+    "mysql2": "^2.3.3",
+    "qrcode": "^1.5.0",
+    "qrcode-terminal": "^0.12.0",
+    "socket.io": "^4.5.1",
+    "whatsapp-web.js": "^1.17.1"
+  }
+}

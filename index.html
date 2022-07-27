@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Whatsapp API bg VedricoPane</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Whatsapp API </h1>
+            <img src="" alt="QR Code" id="qrcode">
+            <h3>Logs : </h3>
+            <ul class="logs"></ul>
+        </div>
+        <!-- membutukan jquery dan socket.io client -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.min.js" integrity="sha512-mHO4BJ0ELk7Pb1AzhTi3zvUeRgq3RXVOu9tTRfnA6qOxGK4pG2u57DJYolI4KrEnnLTcH9/J5wNOozRTDaybXg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+        <script>
+            $(document).ready(function() {
+                // io pada code dibawah berasal dari <script socket.io.min.js> yg telah ditambahkan.
+                var socket = io.connect('http://localhost:8000', { path: '/socket.io' });   
+
+                socket.on('message', function(msg) {
+                    $('.logs').append($('<li>').text(msg));
+                });
+
+                socket.on('qr', function(src) {
+                    $('#qrcode').attr('src', src);
+                });
+
+                socket.on('ready', function(src) {
+                    $('#qrcode').hide();
+                });
+
+                socket.on('authenticated', function(src) {
+                    $('#qrcode').hide();
+                });
+                
+            });
+        </script>
+    </body>
+</html>
